@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./asset/css/grid.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
+</head>
+<body>
+    <div class="toggle" onclick="openMenu()"></div>
+
+    <section class="menu">
+        <ul>
+            <li><a onclick="openMenu()" href="#home">Home</a></li>
+            <li><a onclick="openMenu()" href="#works">Works</a></li>
+            <li><a onclick="openMenu()" href="#services">Services</a></li>
+            <li><a onclick="openMenu()" href="#about">About</a></li>
+            <li><a onclick="openMenu()" href="#contact">Contact</a></li>
+        </ul>
+    </section>
+
+    <script>
+        var toggleIcon = document.querySelector('.toggle')
+        var menu = document.querySelector('.menu')
+
+        function openMenu() {
+            toggleIcon.classList.toggle('active')
+            menu.classList.toggle('active')
+        }
+    </script>
+
+    <section class="home grid" id="home">
+        <div class="row">
+            <div class="col l-5 home__img">
+                <img src="./asset/images/bg3.jpg" alt="">
+            </div>
+            <div class="col l-7 home__content">
+                <h5>My_PortFolio</h5>
+                <div class="wrap-content">
+                    <h4>Hello</h4>
+                    <span>, I'm</span>
+                    <h2>Ng Thanh Cong</h2>
+                    <span>I'm a noob Front End Destroyer.</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui repellat nisi est ratione ipsam eligendi harum. Illum ab eligendi cumque non iste, et, nemo facilis culpa quidem maxime ex alias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eius sint eos cum natus molestiae ea doloremque</p>
+                <a class="btn" href="">About me</a>
+                <ul>
+                    <li><a href=""><img src="./asset/images/facebook.png" alt=""></a></li>
+                    <li><a href=""><img src="./asset/images/instagram.png" alt=""></a></li>
+                    <li><a href=""><img src="./asset/images/twitter.png" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about__title">
+            <h2>About Us</h2>
+        </div>
+        <div class="grid">
+            <div class="about__content row">
+                <div class="col l-6">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, totam nam modi suscipit exercitationem vitae iste? Sunt perferendis ex hic expedita, ab esse velit! Tempore provident repudiandae iusto dolores optio!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum esse enim tempora, eius incidunt nobis ducimus laudantium aliquam fugit quaerat ex odit, veniam aperiam impedit eligendi eveniet cum consectetur deleniti?</p>
+                </div>
+                <div class="about__img col l-6">
+                    <img src="./asset/images/66398858_696185114138430_5902636961494990848_o.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="title">
+            <h2>Our Services</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nulla repudiandae eius impedit! Reiciendis debitis isteequi.</p>
+        </div>
+        <div class="grid services__content">
+            <div class="services__list row">
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon1.png" alt="">
+                        <h2>Web Design</h2>
+                        <p>  Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon2.png" alt="">
+                        <h2>Web Design</h2>
+                        <p> Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon3.png" alt="">
+                        <h2>Web Design</h2>
+                        <p> Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon4.png" alt="">
+                        <h2>Web Design</h2>
+                        <p> Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon5.png" alt="">
+                        <h2>Web Design</h2>
+                        <p> Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+                <div class="col l-4 services__col">
+                    <div class="services__item">
+                        <img src="./asset/images/icon6.png" alt="">
+                        <h2>Web Design</h2>
+                        <p> Unde quibusdam beatae esse nihil! Itaque placeat deleniti ex! Nam molestias dignissimos consectetur deleniti? Expedita nihil labore ad iste dolorum eos maiores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="works" id="works">
+        <div class="title">
+            <h2>Recent Works</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nulla repudiandae eius impedit! Reiciendis debitis isteequi.</p>
+        </div>
+        <div class="grid works__content">
+            <div class="row works__list">
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img1.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img2.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img3.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img4.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img5.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img6.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <a href="#" class="works__item">
+                        <img src="./asset/images/img7.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </a>
+                </div>
+                <div class="col l-3 works__col">
+                    <div class="works__item">
+                        <img src="./asset/images/img8.jpg" alt="">
+                        <h5>Project 1</h5>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="title white">
+            <h2>Contact</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nulla repudiandae eius impedit! Reiciendis debitis isteequi.</p>
+        </div>
+        <div class="contact__content">
+            <form action="" class="contact__form">
+                <input type="text" name="fname" id="" placeholder="First Name">
+                <input type="text" name="lname" id="" placeholder="Last Name">
+                <input type="email" name="email" id="" placeholder="Email">
+                <input type="tel" name="tel" id="" placeholder="Mobile Num">
+                <textarea placeholder="Message" name="message" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Go with us" name="submit">
+            </form>
+        </div>
+    </section>
+    <footer class="foot">
+        <h3>Copyright © 2018. by Ng Thanh Cong</h3>
+    </footer>
+</body>
+</html>
