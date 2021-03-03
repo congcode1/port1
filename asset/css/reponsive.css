@@ -1,0 +1,95 @@
+/* Tablet + Phone */
+@media (max-width: 1023px) {
+    .home__img img {
+        height: unset;
+    }
+    .home {
+        height: unset;
+    }
+    
+    .about {
+        height: unset;
+    }
+
+    .about__content p {
+        text-align: center;
+    }
+
+    .about__content .about__img {
+        margin-top: 30px;
+    }
+
+    .menu {
+        width: 100%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .home__content ul {
+        bottom: 17px;
+    }
+
+    .home__content {
+        padding: 80px 100px;
+    }
+
+    .contact {
+        padding: 100px;
+    }
+}
+
+/* Phone */
+@media (max-width: 739px) {
+    .home {
+        padding: 0;
+    }
+
+    .home__content ul {
+        bottom: 12px;
+    }
+
+    .home__content {
+        padding: 60px 10px;
+    }
+    .about__content {
+        padding: 60px 0;
+    }
+
+    .about {
+        padding: 0;
+    }
+
+    .about__title,
+    .services .title,
+    .works .title,
+    .contact .title h2 {
+        margin-top: 40px;
+    }
+
+    .about__col {
+        padding: 2px;
+    }
+
+    .services {
+        padding: unset;
+    }
+
+    .services__col {
+        padding: unset;
+        margin-top: 20px;
+    }
+
+    .works {
+        padding: unset;
+    }
+
+    .contact {
+        padding: 0 10px;
+    }
+
+    .wrap {
+        overflow: hidden;
+    }
+
+}

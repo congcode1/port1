@@ -301,8 +301,6 @@
     height: 12px;
 }
 
-
-
 .works__content::-webkit-scrollbar-thumb {
     background-image: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
 }
