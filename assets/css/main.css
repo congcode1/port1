@@ -146,14 +146,6 @@
     opacity: 1;
 }
 
-.hide {
-    display: none;
-}
-
-.mobile-toggle {
-    display: none;
-}
-
 /* ABOUT SECTION */
 
 section {
@@ -600,4 +592,174 @@ section {
 
 .form-submit-btn:hover {
     background: var(--primary-color);
+}
+
+/* portfolio */
+
+.portfolio__item {
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.portfolio__item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio__item .item-content {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: 0.5s;
+}
+
+.portfolio__item .item-content::before {
+    position: absolute;
+    content: "";
+    top: 15px;
+    left: 15px;
+    width: 48px;
+    height: 48px;
+    border-top: 3px solid #fff;
+    border-left: 3px solid #fff;
+}
+
+.portfolio__item .item-content::after {
+    position: absolute;
+    content: "";
+    right: 15px;
+    bottom: 15px;
+    width: 48px;
+    height: 48px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.portfolio__item:hover .item-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.portfolio__item .item-content p i {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.portfolio__gallery {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-icon {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.icon-prev {
+    top: 50%;
+    left: 10px;
+}
+
+.icon-next {
+    top: 50%;
+    right: 10px;
+}
+
+.icon-close {
+    top: 10px;
+    right: 20px;
+}
+
+.portfolio__gallery img {
+    width: 700px;
+}
+
+.portfolio__detail {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.portfolio__detail-icon.icon-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.portfolio__detail-wrap {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+}
+
+.portfolio__detail img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.portfolio__detail h2 {
+    margin-bottom: 10px;
+}
+
+.portfolio__detail .detail__item h3 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.portfolio__detail .detail__item i {
+    margin-top: 20px;
+    display: block;
+}
+
+.portfolio__detail .detail__item p span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/*  */
+
+.hide {
+    display: none;
+}
+
+.mobile-toggle {
+    display: none;
 }
