@@ -7,12 +7,16 @@
         text-align: center;
     }
 
-    #header.active {
-        padding: 0 calc((100% - 720px) / 2);
-    }
-
     #header p {
         margin: 70px 0;
+    }
+
+    #header .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1002;
     }
 
     #header h1 a {
@@ -73,9 +77,10 @@
         margin: 20px auto;
     }
 
-    .menu-toggle {
-        display: flex;
-        z-index: 1002;
+    #header.active .menu-toggle {
+        position: relative;
+        top: unset;
+        right: unset;
     }
 
     /* ABOUT */
@@ -92,7 +97,7 @@
     }
 
     section {
-        margin: 0 calc((100% - 720px) / 2);
+        margin: auto;
     }
 
     .count-item {
@@ -119,7 +124,7 @@
         width: 100vw;
     }
 
-    section {
+    /* section {
         margin: 0 calc((100% - 576px) / 2);
-    }
+    } */
 }

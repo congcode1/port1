@@ -16,11 +16,13 @@ var eHeader = document.querySelector("#header");
 var eSections = document.querySelectorAll("section");
 
 var eHeaderNavigationList = document.querySelector(".header__list.header__navigation");
+var eMenuToggle = document.querySelector(".menu-toggle");
 
 function setSelectedNavigationItem(item) {
     eNavigationItems.forEach((resetItem) => {
         resetItem.classList.remove("navigation__item--active");
         eHeaderNavigationList.classList.remove("header__navigation--mobile");
+        eMenuToggle.classList.remove("active");
     });
 
     item.classList.add("navigation__item--active");
@@ -164,7 +166,6 @@ ePortfolioDetailCloseBtn.addEventListener("click", function () {
 })
 
 // menu-toggle
-var eMenuToggle = document.querySelector(".menu-toggle");
 
 eMenuToggle.addEventListener("click", () => {
     eMenuToggle.classList.toggle("active");

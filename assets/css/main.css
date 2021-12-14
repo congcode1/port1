@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
     --primary-color: #18d26e;
 }
@@ -21,8 +25,6 @@
 
 #header {
     height: 100vh;
-    padding: 0 calc((100% - 1200px) / 2);
-    margin: 0 auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -30,20 +32,22 @@
     transition: 0.4s;
 }
 
+#header .container {
+}
+
 #header.active {
     position: fixed;
     height: 80px;
-    width: 100%;
-    justify-content: space-between;
     background: rgba(0, 0, 0, 0.9);
-    margin-bottom: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 #header.active .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
 }
 
 #header.active h1 a {
@@ -158,6 +162,10 @@ section {
     animation: upto 0.6s ease-in-out;
 }
 
+.section {
+    margin: auto;
+}
+
 @keyframes upto {
     0% {
         opacity: 0;
@@ -170,8 +178,6 @@ section {
 }
 
 .about-container {
-    max-width: 1200px;
-    margin: auto;
     background: rgba(0, 0, 0, 0.8);
     /* animation: upto 0.5s; */
     animation-delay: 0.5s;
@@ -765,12 +771,12 @@ section {
 }
 
 .menu-toggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    position: relative;
+    /* top: 10px;
+    right: 10px; */
     width: 70px;
     height: 70px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
