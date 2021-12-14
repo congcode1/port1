@@ -78,6 +78,32 @@ new Swiper('.testimonial-slider', {
     }
 });
 
+new Swiper('.portfolio__slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+        },
+
+        1200: {
+            slidesPerView: 1,
+            spaceBetween: 20
+        }
+    }
+});
+
 var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
 var eGallery = document.querySelector(".portfolio__gallery");
 var eGalleryImg = document.querySelector(".portfolio__gallery img");
@@ -132,4 +158,13 @@ eWatchPortfolioDetail.forEach((item) => {
 
 ePortfolioDetailCloseBtn.addEventListener("click", function () {
     ePortfolioDetail.classList.add("hide");
+})
+
+// menu-toggle
+var eMenuToggle = document.querySelector(".menu-toggle");
+var eHeaderNavigationList = document.querySelector(".header__list.header__navigation");
+
+eMenuToggle.addEventListener("click", () => {
+    eMenuToggle.classList.toggle("active");
+    eHeaderNavigationList.classList.toggle("header__navigation--mobile");
 })
