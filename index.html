@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
@@ -20,11 +21,11 @@
             <p>I'm a noob <span>gamer</span> from VietNam</p>
             <ul class="header__list header__navigation">
                 <li class="navigation__item navigation__item--active"><a href="#home">Home</a></li>
-                <li class="navigation__item"><a href=" #about">About</a></li>
-                <li class="navigation__item"><a href=" #resume">Resume</a></li>
-                <li class="navigation__item"><a href=" #services">Services</a></li>
-                <li class="navigation__item"><a href=" #portfolio">Portfolio</a></li>
-                <li class="navigation__item"><a href=" #contact">Contact</a></li>
+                <li class="navigation__item"><a href="#about">About</a></li>
+                <li class="navigation__item"><a href="#resume">Resume</a></li>
+                <li class="navigation__item"><a href="#services">Services</a></li>
+                <li class="navigation__item"><a href="#portfolio">Portfolio</a></li>
+                <li class="navigation__item"><a href="#contact">Contact</a></li>
             </ul>
             <div class="header__list header__social">
                 <a href="">
@@ -312,27 +313,266 @@
                 <div class="section-title">
                     <p>TESTIMONIALS</p>
                 </div>
-                <div class="testimonial-container">
-                    <div class="slide-auto">
-                        <div class="row">
-                            <div class="col l-4">
-                                <div class="slide-auto__item">
+                <div class="testimonial-slider swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-auto__item">
+                                <p>
+                                    <i class="fas fa-quote-left"></i> Officiis eligendi itaque labore et dolorum
+                                    mollitia officiis optio vero.
+                                    Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia
+                                    tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia.
+                                    <i class="fas fa-quote-right"></i>
+                                </p>
 
-                                    <p>
-                                        <i class="fas fa-quote-left"></i> Officiis eligendi itaque labore et dolorum
-                                        mollitia officiis optio vero.
-                                        Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia
-                                        tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia.
-                                        <i class="fas fa-quote-right"></i>
-                                    </p>
-
-                                    <div class="testimonial__person">
-                                        <img src="./assets/images/avatar.jpg" alt="">
-                                        <h4>Ng Thanh Cong</h4>
-                                        <p>Coder</p>
-                                    </div>
+                                <div class="testimonial__person">
+                                    <img src="./assets/images/avatar.jpg" alt="">
+                                    <h4>Ng Thanh Cong</h4>
+                                    <p>Coder</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-auto__item">
+                                <p>
+                                    <i class="fas fa-quote-left"></i> Officiis eligendi itaque labore et dolorum
+                                    mollitia officiis optio vero.
+                                    Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia
+                                    tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia.
+                                    <i class="fas fa-quote-right"></i>
+                                </p>
+
+                                <div class="testimonial__person">
+                                    <img src="./assets/images/avatar.jpg" alt="">
+                                    <h4>Ng Thanh Cong</h4>
+                                    <p>Coder</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-auto__item">
+                                <p>
+                                    <i class="fas fa-quote-left"></i> Officiis eligendi itaque labore et dolorum
+                                    mollitia officiis optio vero.
+                                    Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia
+                                    tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia.
+                                    <i class="fas fa-quote-right"></i>
+                                </p>
+
+                                <div class="testimonial__person">
+                                    <img src="./assets/images/avatar.jpg" alt="">
+                                    <h4>Ng Thanh Cong</h4>
+                                    <p>Coder</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-auto__item">
+                                <p>
+                                    <i class="fas fa-quote-left"></i> Officiis eligendi itaque labore et dolorum
+                                    mollitia officiis optio vero.
+                                    Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia
+                                    tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia.
+                                    <i class="fas fa-quote-right"></i>
+                                </p>
+
+                                <div class="testimonial__person">
+                                    <img src="./assets/images/avatar.jpg" alt="">
+                                    <h4>Ng Thanh Cong</h4>
+                                    <p>Coder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hide -->
+    <section id="resume" class="hide">
+        <div class="about-container">
+            <div class="section-title">
+                <p>Resume</p>
+                <h1>Check my resume</h1>
+            </div>
+            <div class="resume-content">
+                <div class="row">
+                    <div class="col l-6">
+                        <div class="resume__item">
+                            <h2>Sumary</h2>
+                            <div class="resume-item__content">
+                                <span class="resume-item__line">
+                                </span>
+                                <div class="resume-item__text">
+                                    <h3>ALICE BARKLEY</h3>
+                                    <i>Innovative and deadline-driven Graphic Designer with 3+ years of experience
+                                        designing
+                                        and
+                                        developing user-centered digital/print marketing material from initial concept
+                                        to
+                                        final,
+                                        polished deliverable.
+                                    </i>
+                                    <ul>
+                                        <li>1102, Huynh Tan Phat</li>
+                                        <li>+84 396 399 123</li>
+                                        <li>nxgthanhcongcommunity@gmail.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume__item">
+                            <h2>Professional Experience</h2>
+                            <div class="resume-item__content">
+                                <span class="resume-item__line">
+                                </span>
+                                <div class="resume-item__text">
+                                    <h3>SENIOR GRAPHIC DESIGN SPECIALIST</h3>
+                                    <p><span>2015 - 2016</span></p>
+                                    <i>Innovative and deadline-driven Graphic Designer with 3+ years of experience
+                                        designing
+                                        and
+                                        developing user-centered digital/print marketing material from initial concept
+                                        to
+                                        final,
+                                        polished deliverable.
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="resume-item__content">
+                                <span class="resume-item__line">
+                                </span>
+                                <div class="resume-item__text">
+                                    <h3>SENIOR GRAPHIC DESIGN SPECIALIST</h3>
+                                    <p><span>2015 - 2016</span></p>
+                                    <i>Innovative and deadline-driven Graphic Designer with 3+ years of experience
+                                        designing
+                                        and
+                                        developing user-centered digital/print marketing material from initial concept
+                                        to
+                                        final,
+                                        polished deliverable.
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="resume__item">
+                            <h2>Professional Experience</h2>
+                            <div class="resume-item__content">
+                                <span class="resume-item__line">
+                                </span>
+                                <div class="resume-item__text">
+                                    <h3>SENIOR GRAPHIC DESIGN SPECIALIST</h3>
+                                    <p><span>2015 - 2016</span></p>
+                                    <i>Innovative and deadline-driven Graphic Designer with 3+ years of experience
+                                        designing
+                                        and
+                                        developing user-centered digital/print marketing material from initial concept
+                                        to
+                                        final,
+                                        polished deliverable.
+                                    </i>
+                                    <ul>
+                                        <li>1102, Huynh Tan Phat</li>
+                                        <li>+84 396 399 123</li>
+                                        <li>nxgthanhcongcommunity@gmail.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="resume-item__content">
+                                <span class="resume-item__line">
+                                </span>
+                                <div class="resume-item__text">
+                                    <h3>SENIOR GRAPHIC DESIGN SPECIALIST</h3>
+                                    <p><span>2015 - 2016</span></p>
+                                    <i>Innovative and deadline-driven Graphic Designer with 3+ years of experience
+                                        designing
+                                        and
+                                        developing user-centered digital/print marketing material from initial concept
+                                        to
+                                        final,
+                                        polished deliverable.
+                                    </i>
+                                    <ul>
+                                        <li>1102, Huynh Tan Phat</li>
+                                        <li>+84 396 399 123</li>
+                                        <li>nxgthanhcongcommunity@gmail.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="hide">
+        <div class="about-container">
+            <div class="section-title">
+                <p>Services</p>
+                <h1>My services</h1>
+            </div>
+            <div class="resume-content">
+                <div class="row">
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="service__item">
+                            <p class="icon">
+                                <i class="fab fa-android"></i>
+                            </p>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                         </div>
                     </div>
                 </div>
@@ -340,18 +580,94 @@
         </div>
     </section>
 
-    <section id="resume" class="hide">
+    <section id="contact" class="hide">
         <div class="about-container">
             <div class="section-title">
-                <p>Resume</p>
-                <h1>Learn more about me</h1>
+                <p>Contact</p>
+                <h1>Contact me</h1>
             </div>
-            <div class="row">
-                <div class="col l-4">
-                    asd
-                </div>
-                <div class="col l-8">
-                    8 part
+            <div class="resume-content">
+                <div class="row">
+                    <div class="col l-6">
+                        <div class="contact__item">
+                            <p class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </p>
+                            <div class="contact-text">
+                                <h3>My Address</h3>
+                                <p>1102 Huynh Tan Phat, P.Tan Phu, Q7, TP.HCM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="contact__item">
+                            <p class="icon">
+                                <i class="fas fa-share-alt"></i>
+                            </p>
+
+                            <div class="contact-text">
+                                <h3>Socials</h3>
+                                <p>
+                                    <a href="">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="contact__item">
+                            <p class="icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </p>
+                            <div class="contact-text">
+                                <h3>Email</h3>
+                                <p>nxgthanhcongcommunity@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="contact__item">
+                            <p class="icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </p>
+                            <div class="contact-text">
+                                <h3>Phone number</h3>
+                                <p>+84 396 399 123</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-12">
+                        <div class="contact__form">
+                            <div class="row">
+                                <div class="col l-6">
+                                    <input type="text" placeholder="Your name">
+                                </div>
+                                <div class="col l-6">
+                                    <input type="text" placeholder="Your email">
+                                </div>
+                                <div class="col l-12">
+                                    <input type="text" placeholder="Subject">
+                                </div>
+                                <div class="col l-12">
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <button class="form-submit-btn">
+                                Send message
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -365,18 +681,6 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: "auto",
-            spaceBetween: 30,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
-    </script>
 
     <script src="./assets/js/main.js"></script>
 </body>

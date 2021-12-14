@@ -1,3 +1,14 @@
+
+/**
+   * Scrolls to an element with header offset
+   */
+const customScrollto = (el) => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+}
+
 var eNavigationItems = document.querySelectorAll(".navigation__item");
 var eSocialList = document.querySelector(".header__social");
 var eIntro = document.querySelector("#header p");
@@ -24,12 +35,46 @@ function setSelectedSection(item) {
     })
 
     var selectedSection = document.querySelector(`#${item.textContent.toLocaleLowerCase()}`);
-    selectedSection.classList.remove("hide");
+    if (selectedSection)
+        selectedSection.classList.remove("hide");
 }
 
 eNavigationItems.forEach((item) => {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", function (e) {
         setSelectedNavigationItem(item);
         setSelectedSection(item);
+
+        e.preventDefault();
+        customScrollto();
     })
 })
+
+
+// swipper
+
+new Swiper('.testimonial-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+        },
+
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+        }
+    }
+});
+
