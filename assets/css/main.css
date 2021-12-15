@@ -18,10 +18,22 @@
 #body {
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
     font-family: "Raleway";
     line-height: 30px;
-    /* position: relative; */
+}
+
+#body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: -1000;
 }
 
 #header {
@@ -31,9 +43,7 @@
     align-items: center;
     z-index: 10000;
     transition: 0.4s;
-}
-
-#header .container {
+    overflow: hidden;
 }
 
 #header.active {
@@ -159,21 +169,15 @@
 
 /* ABOUT SECTION */
 
-section {
-    /* position: absolute;
-    top: 120px;
-    left: 0;
-    right: 0; */
-    bottom: auto;
+.section {
+    margin-top: 120px !important;
     padding-bottom: 40px;
     animation: upto 0.6s ease-in-out;
 }
 
-.section {
-    margin: auto;
-    margin-top: 120px !important;
-    margin-bottom: 120px !important;
-    overflow-x: hidden;
+.section.section-show {
+    bottom: auto;
+    opacity: 1;
 }
 
 @keyframes upto {
@@ -308,22 +312,31 @@ section {
     font-size: 1em;
 }
 
-.skill-percent {
-    display: block;
+.skill-percent-wrap {
     height: 10px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.2);
     position: relative;
 }
 
-.skill-percent::before {
-    content: "";
+.skill-percent-bg {
     position: absolute;
     top: 0;
     left: 0;
-    width: var(--skill-percent);
-    height: 100%;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    /* position: relative; */
+}
+
+.skill-percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    background: rgba(255, 255, 255, 0.2);
     background: var(--primary-color);
+    z-index: 2;
 }
 
 .about-interrest {

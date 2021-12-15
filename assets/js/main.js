@@ -14,9 +14,12 @@ var eSocialList = document.querySelector(".header__social");
 var eIntro = document.querySelector("#header p");
 var eHeader = document.querySelector("#header");
 var eSections = document.querySelectorAll("section");
+var eBody = document.querySelector("#body");
 
 var eHeaderNavigationList = document.querySelector(".header__list.header__navigation");
 var eMenuToggle = document.querySelector(".menu-toggle");
+var eFooter = document.querySelector("#footer")
+
 
 function setSelectedNavigationItem(item) {
     eNavigationItems.forEach((resetItem) => {
@@ -28,15 +31,19 @@ function setSelectedNavigationItem(item) {
     item.classList.add("animated-button");
 
     if (item.textContent.toLocaleLowerCase().trim() !== "home") {
+        eBody.classList.add("scrollAble")
         eHeader.classList.add("active");
+        eFooter.classList.remove("hide");
     } else {
+        eBody.classList.remove("scrollAble")
         eHeader.classList.remove("active");
+        eFooter.classList.add("hide");
     }
 }
 
 function setSelectedSection(item) {
-    eSections.forEach((item) => {
-        item.classList.add("hide");
+    eSections.forEach((section) => {
+        section.classList.add("hide");
     })
 
     var selectedSection = document.querySelector(`#${item.textContent.toLocaleLowerCase().trim()}`);
@@ -171,3 +178,18 @@ eMenuToggle.addEventListener("click", () => {
     eMenuToggle.classList.toggle("active");
     eHeaderNavigationList.classList.toggle("header__navigation--mobile");
 })
+
+// way point
+
+// let eSkilsContainer = document.querySelector('.skill-container');
+// new Waypoint({
+//     element: eSkilsContainer,
+//     handler: function (direction) {
+//         // let progress = document.querySelectorAll('.skill-percent-wrap .skill-percent');
+//         // progress.forEach((el) => {
+//         //     el.style.width = el.previousElementSibling.getAttribute('skill-value') + '%'
+//         // });
+
+//         alert("sad")
+//     }
+// })
