@@ -200,8 +200,8 @@ section {
     content: "";
     position: absolute;
     top: 50%;
-    right: calc((-50px - 100%));
-    width: 100px;
+    right: calc((14px - 100%));
+    width: 60%;
     height: 1px;
     background: var(--primary-color);
     transform: translateY(-50%);
@@ -225,8 +225,10 @@ section {
 }
 
 .about__list {
+    max-width: 100%;
     margin: 16px 0;
     display: inline-block;
+    overflow-x: hidden;
 }
 
 .about__item {
