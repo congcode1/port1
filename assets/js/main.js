@@ -9,6 +9,7 @@ const customScrollto = (el) => {
     })
 }
 
+let eSkilsContainer = document.querySelector('.skill-container');
 var eNavigationItems = document.querySelectorAll(".navigation__item a");
 var eSocialList = document.querySelector(".header__social");
 var eIntro = document.querySelector("#header p");
@@ -39,6 +40,23 @@ function setSelectedNavigationItem(item) {
         eHeader.classList.remove("active");
         eFooter.classList.add("hide");
     }
+
+    if (item.textContent.toLocaleLowerCase().trim() === "about") {
+        new Waypoint({
+            element: eSkilsContainer,
+            offset: '-80%',
+            handler: function (direction) {
+                let progress = document.querySelectorAll('.skill-percent-wrap .skill-percent');
+                progress.forEach((el) => {
+                    console.log(el.parentElement)
+                    el.style.width = el.parentElement.getAttribute('skill-value') + '%'
+                });
+
+                // alert("sad")
+            }
+
+        })
+    }
 }
 
 function setSelectedSection(item) {
@@ -55,7 +73,7 @@ eNavigationItems.forEach((item) => {
     item.addEventListener("click", function (e) {
         setSelectedNavigationItem(item);
         setSelectedSection(item);
-
+        console.log("skill container: ", eSkilsContainer);
         e.preventDefault();
         customScrollto();
     })
@@ -181,7 +199,6 @@ eMenuToggle.addEventListener("click", () => {
 
 // way point
 
-// let eSkilsContainer = document.querySelector('.skill-container');
 // new Waypoint({
 //     element: eSkilsContainer,
 //     handler: function (direction) {
