@@ -137,6 +137,10 @@
         font-size: 1.4em;
     }
 
+    .footer__menu {
+        display: none;
+    }
+
     /* section {
         margin: 0 calc((100% - 576px) / 2);
     } */

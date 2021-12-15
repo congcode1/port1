@@ -9,7 +9,7 @@ const customScrollto = (el) => {
     })
 }
 
-var eNavigationItems = document.querySelectorAll(".navigation__item");
+var eNavigationItems = document.querySelectorAll(".navigation__item a");
 var eSocialList = document.querySelector(".header__social");
 var eIntro = document.querySelector("#header p");
 var eHeader = document.querySelector("#header");
@@ -20,14 +20,14 @@ var eMenuToggle = document.querySelector(".menu-toggle");
 
 function setSelectedNavigationItem(item) {
     eNavigationItems.forEach((resetItem) => {
-        resetItem.classList.remove("navigation__item--active");
+        resetItem.classList.remove("animated-button");
         eHeaderNavigationList.classList.remove("header__navigation--mobile");
         eMenuToggle.classList.remove("active");
     });
 
-    item.classList.add("navigation__item--active");
+    item.classList.add("animated-button");
 
-    if (item.textContent.toLocaleLowerCase() !== "home") {
+    if (item.textContent.toLocaleLowerCase().trim() !== "home") {
         eHeader.classList.add("active");
     } else {
         eHeader.classList.remove("active");
@@ -39,7 +39,7 @@ function setSelectedSection(item) {
         item.classList.add("hide");
     })
 
-    var selectedSection = document.querySelector(`#${item.textContent.toLocaleLowerCase()}`);
+    var selectedSection = document.querySelector(`#${item.textContent.toLocaleLowerCase().trim()}`);
     if (selectedSection)
         selectedSection.classList.remove("hide");
 }
