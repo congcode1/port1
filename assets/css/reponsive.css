@@ -124,6 +124,14 @@
         width: 100vw;
     }
 
+    #header.active .container {
+        padding: 0 32px;
+    }
+
+    #header h1 {
+        /* font-size: 2em; */
+    }
+
     /* section {
         margin: 0 calc((100% - 576px) / 2);
     } */
