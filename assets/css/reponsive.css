@@ -121,6 +121,10 @@
     .section-title h1 {
         line-height: 40px;
     }
+
+    .clock {
+        display: none;
+    }
 }
 
 /* Phone */
