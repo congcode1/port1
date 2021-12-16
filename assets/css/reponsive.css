@@ -127,6 +127,12 @@
 @media (max-width: 739px) {
     .header__list.header__navigation {
         width: 100vw;
+        padding: 170px 40px;
+    }
+
+    .header__list.header__navigation li,
+    .header__list.header__navigation li a {
+        width: 100%;
     }
 
     #header.active .container {

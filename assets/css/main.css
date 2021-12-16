@@ -78,16 +78,54 @@
 }
 
 #header p {
-    font-size: 1.4em;
+    font-size: 1.8em;
     letter-spacing: 2px;
-    margin: 20px 0;
+    margin: 40px 0 20px 0;
     opacity: 0.9;
+    font-weight: 400;
 }
 
-#header p span {
+#header .animated-text {
+    position: relative;
+    font-size: 1.4em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: inline-block;
+    font-weight: 800;
+}
+
+#header .animated-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: text-animation 6s linear infinite;
+}
+
+@keyframes text-animation {
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+    70%,
+    90% {
+        width: 100%;
+    }
+}
+
+/* #header p span {
     opacity: 1;
     border-bottom: 2px solid var(--primary-color);
-}
+} */
 
 .header__list {
     display: flex;
@@ -165,6 +203,7 @@
 .header__social a:hover {
     background: var(--primary-color);
     opacity: 1;
+    /* box-shadow: 0 0 15px rgba(var(--primary-color), 0.4); */
 }
 
 /* ABOUT SECTION */
@@ -454,6 +493,7 @@
 .resume-item__text span {
     padding: 8px 20px;
     background: rgba(255, 255, 255, 0.1);
+    font-weight: 700;
 }
 
 .resume-item__text ul {

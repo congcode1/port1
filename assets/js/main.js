@@ -44,15 +44,12 @@ function setSelectedNavigationItem(item) {
     if (item.textContent.toLocaleLowerCase().trim() === "about") {
         new Waypoint({
             element: eSkilsContainer,
-            offset: '-80%',
+            offset: '-60%',
             handler: function (direction) {
                 let progress = document.querySelectorAll('.skill-percent-wrap .skill-percent');
                 progress.forEach((el) => {
-                    console.log(el.parentElement)
                     el.style.width = el.parentElement.getAttribute('skill-value') + '%'
                 });
-
-                // alert("sad")
             }
 
         })
@@ -73,7 +70,6 @@ eNavigationItems.forEach((item) => {
     item.addEventListener("click", function (e) {
         setSelectedNavigationItem(item);
         setSelectedSection(item);
-        console.log("skill container: ", eSkilsContainer);
         e.preventDefault();
         customScrollto();
     })
