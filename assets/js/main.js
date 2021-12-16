@@ -193,16 +193,22 @@ eMenuToggle.addEventListener("click", () => {
     eHeaderNavigationList.classList.toggle("header__navigation--mobile");
 })
 
-// way point
+// clock
 
-// new Waypoint({
-//     element: eSkilsContainer,
-//     handler: function (direction) {
-//         // let progress = document.querySelectorAll('.skill-percent-wrap .skill-percent');
-//         // progress.forEach((el) => {
-//         //     el.style.width = el.previousElementSibling.getAttribute('skill-value') + '%'
-//         // });
+const deg = 6;
 
-//         alert("sad")
-//     }
-// })
+const hr = document.querySelector("#hr");
+const mn = document.querySelector("#mn");
+const sc = document.querySelector("#sc");
+
+setInterval(() => {
+    let day = new Date();
+    let hh = day.getHours() * 30;
+    let mm = day.getMinutes() * deg;
+    let ss = day.getSeconds() * deg;
+
+    hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+    mn.style.transform = `rotateZ(${mm}deg)`;
+    sc.style.transform = `rotateZ(${ss}deg)`;
+})
+
