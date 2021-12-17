@@ -9,6 +9,20 @@ const customScrollto = (el) => {
     })
 }
 
+var eOpenCv = document.querySelector('.cv-fixed-btn');
+var eCv = document.querySelector('.cv-content');
+var eCloseCv = document.querySelector('.cv-close');
+
+if (typeof screen.orientation !== 'undefined') {
+    eOpenCv.classList.remove("hide");
+    eOpenCv.addEventListener("click", function () {
+        eCv.classList.remove("hide");
+    })
+    eCloseCv.addEventListener("click", function () {
+        eCv.classList.add("hide");
+    })
+}
+
 let eSkilsContainer = document.querySelector('.skill-container');
 var eNavigationItems = document.querySelectorAll(".navigation__item a");
 var eSocialList = document.querySelector(".header__social");
