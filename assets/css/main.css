@@ -226,6 +226,7 @@
     margin-bottom: 80px !important;
     padding-bottom: 40px;
     animation: upto 0.6s ease-in-out;
+    overflow-x: hidden;
 }
 
 .section.section-show {
