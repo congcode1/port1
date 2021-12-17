@@ -2,6 +2,11 @@
 /**
    * Scrolls to an element with header offset
    */
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+
 const customScrollto = (el) => {
     window.scrollTo({
         top: 0,
