@@ -99,7 +99,7 @@
 #header .cv-text {
     opacity: 1;
     font-size: 1em;
-    -webkit-text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px var(--primary-color);
 }
 
 #header .animated-text::before {
@@ -118,9 +118,8 @@
 
 #header .cv-text::before {
     content: attr(data-text);
-    color: #fff;
-    -webkit-text-stroke: 1px #fff;
-    border-right: 2px solid #fff;
+    -webkit-text-stroke: 0px #fff;
+    border-right: 2px solid var(--primary-color);
 }
 
 @keyframes text-animation {
@@ -1196,18 +1195,26 @@ footer .wave#wave4 {
     bottom: 20px;
     right: 20px;
     opacity: 0.5;
-    background-color: var(--clr);
+    background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.2em;
     padding: 4px 20px;
     font-weight: 700;
     color: #fff;
     text-decoration: none;
     transition: 0.33s;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
 .cv-fixed-btn:hover {
     opacity: 1;
     box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr), 0 0 60px var(--clr), 0 0 100px var(--clr);
+    background: var(--clr);
+    color: #fff;
+}
+
+.cv-fixed-btn:hover .cv-text {
+    -webkit-text-stroke: 1px var(#fff);
+    /* color: #fff; */
 }
 
 /* .cv-fixed-btn::before {
