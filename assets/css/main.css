@@ -418,10 +418,6 @@
     color: var(--interest-item-color);
 }
 
-.slide-auto__item {
-    /* position: relative; */
-}
-
 .slide-auto__item p:first-child {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.08);
