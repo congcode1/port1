@@ -125,6 +125,13 @@
     .clock {
         display: none;
     }
+
+    iframe {
+        right: 0;
+        width: 100%;
+        bottom: 0;
+    }
+    
 }
 
 /* Phone */
@@ -149,6 +156,13 @@
 
     .footer__menu {
         display: none;
+    }
+
+    iframe {
+        right: 0;
+        width: 100%;
+        bottom: 0;
+        height: 160px;
     }
 
     /* section {
