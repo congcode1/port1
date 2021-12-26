@@ -17,6 +17,7 @@ const eListSongs = $(".music-player__list-songs");
 const eCdImage = $(".music-player__song .song__thumb");
 const eRandomSongBtn = $(".control-btn.random-btn");
 const eRepeatSongBtn = $(".control-btn.repeat-btn");
+const eDashboard = $(".music-player__dashboard");
 const MUSIC_PLAYER_KEY = "NTC_MP";
 
 if (typeof screen.orientation !== 'undefined') {
@@ -128,6 +129,9 @@ const player_app = {
         eCdImage.style.backgroundImage = `url('${this.currentSong.image}')`;
         eAudio.src = this.currentSong.audio;
     },
+    initMP: function () {
+        eListSongs.style.height = (eMP.offsetHeight - eDashboard.offsetHeight - 45) + "px";
+    },
     loadConfigs: function () {
         console.log(this.configs)
         this.isRandom = this.configs.isRandom;
@@ -142,7 +146,6 @@ const player_app = {
         //xử lý phóng to/ thu nhỏ cd khi scroll list songs
         const cd = $('.music-player__song');
         const cdWidth = cd.offsetWidth;
-        const eDashboard = $(".music-player__dashboard");
         eListSongs.onscroll = function () {
             const scrollTop = eListSongs.scrollTop;
             const newCdWidth = cdWidth - scrollTop;
@@ -151,7 +154,8 @@ const player_app = {
                 : "0";
             cd.style.opacity = newCdWidth / cdWidth;
             // console.log(eMP.offsetHeight - eDashboard.offsetHeight)
-            eListSongs.style.height = (eMP.offsetHeight - eDashboard.offsetHeight) + "px";
+            eListSongs.style.height = (eMP.offsetHeight - eDashboard.offsetHeight - 45) + "px";
+            // console.log(eListSongs.offsetHeight);
         }
 
         //xử lý khi bấm play
@@ -288,7 +292,7 @@ const player_app = {
         }, 300);
     },
     start: function () {
-        // this.loadConfigs();
+        this.initMP();
         this.defineProperties();
         this.render();
         this.loadCurrentSong();
