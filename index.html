@@ -17,12 +17,62 @@
 </head>
 
 <body id="body" background="./assets/images/background/bg3.jpg">
-    <iframe width="560" height="315"
+    <!-- <iframe width="560" height="315"
         src="https://www.youtube.com/embed/videoseries?list=PLE-ese458_W4Yi9DMI695YKmBnmTBy1lz&autoplay=1"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
-    </iframe>
+    </iframe> -->
+    <div class="music-player hide">
+        <!-- <div class="music-player music-player"> -->
+        <div class="music-player__dashboard">
+            <div class="music-player__header">
+                <div class="down-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="text">
+                    <p>Now playing:</p>
+                    <h3>String 3dfsdf</h3>
+                </div>
+                <div class="plus-btn">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+            <div class="music-player__song">
+                <div class="song__thumb">
+                </div>
+
+                <!-- <img src="./images/maxresdefault.jpg" alt=""> -->
+            </div>
+            <div class="music-player__controls">
+                <div class="control-btn repeat-btn">
+                    <i class="fas fa-redo-alt"></i>
+                </div>
+                <div class="control-btn prev-btn">
+                    <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="control-btn toggle-play-btn">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="pause-btn">
+                        <i class="fas fa-pause"></i>
+                    </div>
+                </div>
+                <div class="control-btn next-btn">
+                    <i class="fas fa-step-forward"></i>
+                </div>
+                <div class="control-btn random-btn">
+                    <i class="fas fa-random"></i>
+                </div>
+            </div>
+            <div class="progress">
+                <input id="progress" type="range" min="0" max="100" value="0" step="1"></input>
+            </div>
+        </div>
+        <audio id="mucsic-player__audio" src=""></audio>
+        <div class="music-player__list-songs"></div>
+    </div>
     <div id="header">
         <div class="container grid wide">
             <!-- <audio src="./assets/images/mz.mp3" autoplay loop></audio> -->
@@ -85,7 +135,7 @@
                 <span></span>
             </div>
         </div>
-        <div class="clock hide">
+        <!-- <div class="clock hide">
             <div class="hour">
                 <div class="hr" id="hr"></div>
             </div>
@@ -95,7 +145,7 @@
             <div class="sec">
                 <div class="sc" id="sc"></div>
             </div>
-        </div>
+        </div> -->
         <div class="cv">
             <a class="cv-fixed-btn hide" href="#" style="--clr:#18d26e;--i:2">
                 <span class="animated-text cv-text" data-text="Check_CV...">Check_CV...</span>
@@ -936,6 +986,7 @@
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/music_player.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
    */
 
 document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
+    // e.preventDefault();
 });
 
 const customScrollto = (el) => {
@@ -54,10 +54,12 @@ function setSelectedNavigationItem(item) {
         eBody.classList.add("scrollAble")
         eHeader.classList.add("active");
         eFooter.classList.remove("hide");
+        eMP.classList.add("hide");
     } else {
         eBody.classList.remove("scrollAble")
         eHeader.classList.remove("active");
         eFooter.classList.add("hide");
+        eMP.classList.remove("hide");
     }
 
     if (item.textContent.toLocaleLowerCase().trim() === "about") {
