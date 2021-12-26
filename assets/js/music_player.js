@@ -11,9 +11,6 @@
  * 10. play song when click
  */
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
 const eMP = $(".music-player");
 const eAudio = $("#mucsic-player__audio");
 const eListSongs = $(".music-player__list-songs");
