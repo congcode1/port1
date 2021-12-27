@@ -19,8 +19,11 @@ var eHeaderNavigationList = $(".header__list.header__navigation");
 var eMenuToggle = $(".menu-toggle");
 var eFooter = $("#footer")
 
+var ePlusBtn = $(".robot-btn");
+
 const app = {
     initial: function () {
+        //swiper
         new Swiper('.testimonial-slider', {
             speed: 600,
             loop: true,
@@ -108,6 +111,8 @@ const app = {
                 _this.helperFuncs.scroll();
             })
         })
+
+
 
     },
     setSelectedNavigationItem: function (item) {
