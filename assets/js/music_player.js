@@ -182,6 +182,7 @@ const player_app = {
             if (eAudio.duration) {
                 var progressPercent = Math.floor(eAudio.currentTime / eAudio.duration * 100);
                 eProgress.value = progressPercent;
+                $(".progress span").style.width = progressPercent + "%";
             }
         }
 
