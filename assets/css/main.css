@@ -95,7 +95,8 @@ iframe {
     font-weight: 400;
 }
 
-#header .animated-text {
+#header .animated-text,
+#resume .animated-text {
     position: relative;
     font-size: 1.4em;
     color: transparent;
@@ -106,13 +107,15 @@ iframe {
     font-weight: 900;
 }
 
-#header .cv-text {
+#header .cv-text,
+#resume .cv-text {
     opacity: 1;
     font-size: 1em;
     -webkit-text-stroke: 1px var(--primary-color);
 }
 
-#header .animated-text::before {
+#header .animated-text::before,
+#resume .animated-text::before {
     content: attr(data-text);
     position: absolute;
     top: 0;
@@ -126,7 +129,8 @@ iframe {
     animation: text-animation 6s linear infinite;
 }
 
-#header .cv-text::before {
+#header .cv-text::before,
+#resume .cv-text::before {
     content: attr(data-text);
     -webkit-text-stroke: 0px #fff;
     border-right: 2px solid var(--primary-color);
@@ -289,6 +293,12 @@ iframe {
 
 .section-title h1 {
     font-size: 2.4em;
+    text-transform: uppercase;
+    margin: 16px 0;
+}
+
+.section-title .cv {
+    font-size: 1.6em;
     text-transform: uppercase;
     margin: 16px 0;
 }
@@ -1198,12 +1208,11 @@ footer .wave#wave4 {
 /* end clock */
 
 .cv-fixed-btn {
-    position: fixed;
+    /* position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 20px; */
     opacity: 0.5;
     background-color: rgba(0, 0, 0, 0.5);
-    font-size: 1.2em;
     padding: 4px 20px;
     font-weight: 700;
     color: #fff;
@@ -1273,6 +1282,7 @@ footer .wave#wave4 {
 /* Music player */
 
 .music-player {
+    display: none;
     position: fixed;
     bottom: 70px;
     right: 100px;
@@ -1286,6 +1296,13 @@ footer .wave#wave4 {
 .down-btn,
 .robot-btn {
     color: var(--primary-color);
+}
+
+.robot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2em;
 }
 
 .pause-btn {
@@ -1477,4 +1494,27 @@ footer .wave#wave4 {
 .option-btn {
     color: var(--primary-color);
     font-size: 20px;
+}
+
+/* tour */
+
+.customTooltip .introjs-tooltiptext {
+    color: var(--primary-color);
+}
+
+.customTooltip .introjs-tooltip-title {
+    color: #000;
+}
+
+.customTooltip .introjs-button {
+    padding: 0px 16px;
+}
+
+.customTooltip .introjs-button.introjs-nextbutton {
+    padding: 0px 16px;
+    background: var(--primary-color);
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
 }

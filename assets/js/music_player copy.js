@@ -1,23 +1,15 @@
-
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
-
-var eOpenCv = $('.cv-fixed-btn');
-var eCv = $('.cv-content');
-var eCloseCv = $('.cv-close');
-
-let eSkilsContainer = $('.skill-container');
-var eNavigationItems = $$(".navigation__item a");
-var eSocialList = $(".header__social");
-var eIntro = $("#header p");
-var eHeader = $("#header");
-var eSections = $$("section");
-var eBody = $("#body");
-
-var eHeaderNavigationList = $(".header__list.header__navigation");
-var eMenuToggle = $(".menu-toggle");
-var eFooter = $("#footer");
+/**
+ * 1. render song
+ * 2. scroll top
+ * 3. play/pause/seek
+ * 4. rorate CD
+ * 5. next, prev
+ * 6. random
+ * 7. next/repeat when end
+ * 8. active song
+ * 9. scroll active song into view
+ * 10. play song when click
+ */
 
 const eMP = $(".music-player");
 const eAudio = $("#mucsic-player__audio");
@@ -32,9 +24,7 @@ if (typeof screen.orientation !== 'undefined') {
     eMP.classList.remove("hide");
 }
 
-var eRobotBtn = $(".robot-btn");
-
-const app = {
+const player_app = {
     helperFuncs: {
         removeVietnameseTones: function (str) {
             str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
@@ -68,6 +58,11 @@ const app = {
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
+    configs: JSON.parse(localStorage.getItem(MUSIC_PLAYER_KEY)) || {},
+    setConfig: function (key, value) {
+        this.configs[key] = value;
+        localStorage.setItem(MUSIC_PLAYER_KEY, JSON.stringify(this.configs));
+    },
     recognition: {},
     currentIndex: 0,
     songs: [
@@ -165,64 +160,7 @@ const app = {
         eCdImage.style.backgroundImage = `url('${this.currentSong.image}')`;
         eAudio.src = this.currentSong.audio;
     },
-    initial: function () {
-        //test
-
-        console.log(eNavigationItems[1].firstElementChild.innerText);
-
-        //swiper
-        new Swiper('.testimonial-slider', {
-            speed: 600,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            slidesPerView: 'auto',
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-                clickable: true
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-
-                1200: {
-                    slidesPerView: 3,
-                    spaceBetween: 20
-                }
-            }
-        });
-
-        new Swiper('.portfolio__slider', {
-            speed: 600,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            slidesPerView: 'auto',
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-                clickable: true
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-
-                1200: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                }
-            }
-        });
-
+    initMP: function () {
         eListSongs.style.height = (eMP.offsetHeight - eDashboard.offsetHeight - 45) + "px";
         //speech 
         const recognition = new webkitSpeechRecognition();
@@ -230,41 +168,16 @@ const app = {
         recognition.continuous = false;
         this.recognition = recognition;
     },
-    helperFuncs: {
-        scroll: function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
-        }
+    loadConfigs: function () {
+        console.log(this.configs)
+        this.isRandom = this.configs.isRandom;
+        this.isRepeat = this.configs.isRepeat;
+        eRandomSongBtn.classList.toggle("control-btn--active", this.isRandom);
+        eRepeatSongBtn.classList.toggle("control-btn--active", this.isRepeat);
     },
     handleEvents: function () {
+
         const _this = this;
-        // prevent right click
-        document.addEventListener('contextmenu', function (e) {
-            // e.preventDefault();
-        });
-
-        // hide objects on mobile
-        if (typeof screen.orientation !== 'undefined') {
-            eOpenCv.classList.remove("hide");
-            eOpenCv.addEventListener("click", function () {
-                eCv.classList.remove("hide");
-            })
-            eCloseCv.addEventListener("click", function () {
-                eCv.classList.add("hide");
-            })
-        }
-
-        //handle navigation item clcik
-        eNavigationItems.forEach((item) => {
-            item.addEventListener("click", function (e) {
-                e.preventDefault();
-                _this.setSelectedNavigationItem(item);
-                _this.setSelectedSection(item);
-                _this.helperFuncs.scroll();
-            })
-        })
 
         //xử lý phóng to/ thu nhỏ cd khi scroll list songs
         const cd = $('.music-player__song');
@@ -350,12 +263,14 @@ const app = {
         //xử lý random
         eRandomSongBtn.onclick = function () {
             _this.isRandom = !_this.isRandom;
+            _this.setConfig("isRandom", _this.isRandom);
             eRandomSongBtn.classList.toggle("control-btn--active");
         }
 
         //xử lý repeat
         eRepeatSongBtn.onclick = function () {
             _this.isRepeat = !_this.isRepeat;
+            _this.setConfig("isRepeat", _this.isRepeat);
             eRepeatSongBtn.classList.toggle("control-btn--active");
         }
 
@@ -402,53 +317,6 @@ const app = {
             const text = e.results[0][0].transcript;
             _this.handleVoice(text);
         }
-
-    },
-    setSelectedNavigationItem: function (item) {
-        eNavigationItems.forEach((resetItem) => {
-            resetItem.classList.remove("animated-button");
-            eHeaderNavigationList.classList.remove("header__navigation--mobile");
-            eMenuToggle.classList.remove("active");
-        });
-
-        item.classList.add("animated-button");
-
-        if (item.textContent.toLocaleLowerCase().trim() !== "home") {
-            eBody.classList.add("scrollAble")
-            eHeader.classList.add("active");
-            eFooter.classList.remove("hide");
-            eMP.classList.add("hide");
-        } else {
-            eBody.classList.remove("scrollAble")
-            eHeader.classList.remove("active");
-            eFooter.classList.add("hide");
-            if (typeof screen.orientation !== 'undefined') {
-                eMP.classList.remove("hide");
-            }
-        }
-
-        if (item.textContent.toLocaleLowerCase().trim() === "about") {
-            new Waypoint({
-                element: eSkilsContainer,
-                offset: '-60%',
-                handler: function (direction) {
-                    let progress = document.querySelectorAll('.skill-percent-wrap .skill-percent');
-                    progress.forEach((el) => {
-                        el.style.width = el.parentElement.getAttribute('skill-value') + '%'
-                    });
-                }
-
-            })
-        }
-    },
-    setSelectedSection: function (item) {
-        eSections.forEach((section) => {
-            section.classList.add("hide");
-        })
-
-        var selectedSection = document.querySelector(`#${item.textContent.toLocaleLowerCase().trim()}`);
-        if (selectedSection)
-            selectedSection.classList.remove("hide");
     },
     nextSong: function () {
         this.currentIndex++;
@@ -474,7 +342,6 @@ const app = {
     },
     handleVoice: function (text) {
         var handleText = text.toLocaleLowerCase();
-        console.log(handleText);
 
         if (handleText.includes("chơi bài")) {
             var songName = handleText.split("bài")[1];
@@ -489,27 +356,9 @@ const app = {
             eMP.style.display = "block";
         }
 
-        if (handleText.includes("dừng nhạc")) {
-            eAudio.pause();
-        }
-
-        if (handleText.includes("tiếp tục nghe nhạc")) {
-            eAudio.play();
-        }
-
         if (handleText.includes("tắt nhạc")) {
             eAudio.pause();
             eMP.style.display = "none";
-        }
-
-        if (handleText.includes("tắt web")) {
-            window.open('', '_self').close();
-        }
-
-        if (handleText.includes("menu")) {
-            var itemText = handleText.split("menu")[1];
-            var selectedItem = Array.from(eNavigationItems).find(s => s.firstElementChild.innerText.toLocaleLowerCase().trim() === itemText.trim());
-            selectedItem.click();
         }
     },
     scrollToActiveSong: function () {
@@ -521,100 +370,14 @@ const app = {
         }, 300);
     },
     start: function () {
+        this.initMP();
         this.defineProperties();
-        this.initial();
         this.render();
         this.loadCurrentSong();
         this.handleEvents();
     }
 }
 
-app.start();
+player_app.start();
 
 
-
-
-// swipper
-
-
-var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
-var eGallery = document.querySelector(".portfolio__gallery");
-var eGalleryImg = document.querySelector(".portfolio__gallery img");
-var eGalleryCloseBtn = document.querySelector(".gallery-icon.icon-close");
-var eGalleryNextBtn = document.querySelector(".gallery-icon.icon-next");
-var eGalleryPrevBtn = document.querySelector(".gallery-icon.icon-prev");
-var eListImages = document.querySelectorAll(".portfolio__item img");
-
-var currentIndex = 0;
-
-function showGalleryImage(index) {
-    eGalleryImg.src = eListImages[index].src;
-    eGallery.classList.remove("hide");
-}
-
-eWatchInGallery.forEach((item, index) => {
-    item.addEventListener("click", function () {
-        currentIndex = index;
-        showGalleryImage(currentIndex);
-    })
-})
-
-eGalleryNextBtn.addEventListener("click", function () {
-    currentIndex++;
-    if (currentIndex >= eListImages.length)
-        currentIndex = 0;
-    showGalleryImage(currentIndex);
-});
-
-eGalleryPrevBtn.addEventListener("click", function () {
-    currentIndex--;
-    if (currentIndex <= 0)
-        currentIndex = eListImages.length - 1;
-    showGalleryImage(currentIndex);
-});
-
-eGalleryCloseBtn.addEventListener("click", function () {
-    eGallery.classList.add("hide");
-})
-
-var eWatchPortfolioDetail = document.querySelectorAll(".fas.fa-link");
-var ePortfolioDetail = document.querySelector(".portfolio__detail");
-var ePortfolioDetailCloseBtn = document.querySelector(".portfolio__detail-icon.icon-close");
-
-//fas fa-link
-
-eWatchPortfolioDetail.forEach((item) => {
-    item.addEventListener("click", function () {
-        ePortfolioDetail.classList.remove("hide");
-    })
-})
-
-ePortfolioDetailCloseBtn.addEventListener("click", function () {
-    ePortfolioDetail.classList.add("hide");
-})
-
-// menu-toggle
-
-eMenuToggle.addEventListener("click", () => {
-    eMenuToggle.classList.toggle("active");
-    eHeaderNavigationList.classList.toggle("header__navigation--mobile");
-})
-
-// clock
-
-// const deg = 6;
-
-// const hr = document.querySelector("#hr");
-// const mn = document.querySelector("#mn");
-// const sc = document.querySelector("#sc");
-
-// setInterval(() => {
-//     let day = new Date();
-//     let hh = day.getHours() * 30;
-//     let mm = day.getMinutes() * deg;
-//     let ss = day.getSeconds() * deg;
-
-//     hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
-//     mn.style.transform = `rotateZ(${mm}deg)`;
-//     sc.style.transform = `rotateZ(${ss}deg)`;
-// })
