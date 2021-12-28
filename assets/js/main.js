@@ -551,6 +551,7 @@ const app = {
                     <h3>{voice-text}-{action}</h3>
                     <p>menu + {navigation name}: mở tab navigation tương ứng</p>
                     <p>nghe nhạc: mở Mucsic Player</p>
+                    <p>chơi bài {song name}: play bài hát</p>
                     <p>tắt nhạc: đóng Mucsic Player</p>
                     <p>dừng nhạc: dừng Mucsic Player</p>
                     <p>tiếp tục nghe nhạc: nghe tiếp Mucsic Player</p>
