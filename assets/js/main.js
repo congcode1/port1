@@ -63,8 +63,15 @@ const app = {
             // Bỏ dấu câu, kí tự đặc biệt
             str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
             return str;
+        },
+        scroll: function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
     },
+    isTour: localStorage.getItem("isTour") ? Boolean(localStorage.getItem("isTour")) : false,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
@@ -166,10 +173,9 @@ const app = {
         eAudio.src = this.currentSong.audio;
     },
     initial: function () {
-        //test
-
-        console.log(eNavigationItems[1].firstElementChild.innerText);
-
+        if (!this.isTour) {
+            this.startTour();
+        }
         //swiper
         new Swiper('.testimonial-slider', {
             speed: 600,
@@ -229,14 +235,6 @@ const app = {
         recognition.lang = "vi-VI";
         recognition.continuous = false;
         this.recognition = recognition;
-    },
-    helperFuncs: {
-        scroll: function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
-        }
     },
     handleEvents: function () {
         const _this = this;
@@ -328,8 +326,6 @@ const app = {
         const ePrevSongBtn = $(".control-btn.prev-btn");
         const eNextSongBtn = $(".control-btn.next-btn");
 
-        console.log(_this.isRepeat, _this.isRandom);
-
         ePrevSongBtn.onclick = function () {
             _this.isRandom
                 ? _this.randomSong()
@@ -384,8 +380,28 @@ const app = {
         }
 
         //xử lý speech
+        var isPress = 0;
+        document.onkeydown = function (e) {
+            eRobotBtn.classList.add("robot-btn--listening");
+            if (e.keyCode === 90) {
+                if (isPress === 0) {
+                    _this.recognition.start();
+                    isPress++;
+                }
+            }
+        };
+
+        document.addEventListener("keyup", function (e) {
+            eRobotBtn.classList.remove("robot-btn--listening");
+            if (e.keyCode === 90) {
+                isPress = 0;
+                _this.recognition.stop();
+            }
+        });
+
         eRobotBtn.onclick = function () {
-            _this.recognition.start();
+            // _this.recognition.start();
+            _this.startTour();
         }
 
         _this.recognition.onspeechend = () => {
@@ -474,7 +490,7 @@ const app = {
     },
     handleVoice: function (text) {
         var handleText = text.toLocaleLowerCase();
-        console.log(handleText);
+        console.log("text from voice: ", handleText);
 
         if (handleText.includes("chơi bài")) {
             var songName = handleText.split("bài")[1];
@@ -509,7 +525,7 @@ const app = {
         if (handleText.includes("menu")) {
             var itemText = handleText.split("menu")[1];
             var selectedItem = Array.from(eNavigationItems).find(s => s.firstElementChild.innerText.toLocaleLowerCase().trim() === itemText.trim());
-            selectedItem.click();
+            selectedItem && selectedItem.click();
         }
     },
     scrollToActiveSong: function () {
@@ -519,6 +535,31 @@ const app = {
                 block: "end"
             });
         }, 300);
+    },
+    startTour: function () {
+        introJs().setOptions(
+            {
+                steps: [{
+                    title: 'Welcome chickens',
+                    intro: 'Hello World! 👋, we have stupid bot for you'
+                },
+                {
+                    title: 'Hold Z key!!',
+                    element: $('.robot-btn'),
+                    intro: `
+                    <h3>!!! Sử dụng ggchrome để bật chức năng này</h3>
+                    <h3>{voice-text}-{action}</h3>
+                    <p>menu + {navigation name}: mở tab navigation tương ứng</p>
+                    <p>nghe nhạc: mở Mucsic Player</p>
+                    <p>tắt nhạc: đóng Mucsic Player</p>
+                    <p>dừng nhạc: dừng Mucsic Player</p>
+                    <p>tiếp tục nghe nhạc: nghe tiếp Mucsic Player</p>
+                    `
+                }],
+                tooltipClass: 'customTooltip'
+            },
+        ).start();
+        localStorage.setItem("isTour", true);
     },
     start: function () {
         this.defineProperties();
@@ -530,12 +571,6 @@ const app = {
 }
 
 app.start();
-
-
-
-
-// swipper
-
 
 var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
 var eGallery = document.querySelector(".portfolio__gallery");

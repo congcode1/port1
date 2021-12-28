@@ -1303,6 +1303,23 @@ footer .wave#wave4 {
     bottom: 20px;
     right: 20px;
     font-size: 2em;
+    z-index: 100;
+}
+
+.robot-btn.robot-btn--listening {
+    animation: pulse 1.5s infinite linear;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px 0 rgba(173, 0, 0, 0.3);
+    }
+    65% {
+        box-shadow: 0 0 10px 20px rgba(173, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 10px 20px rgba(173, 0, 0, 0.3);
+    }
 }
 
 .pause-btn {
@@ -1497,6 +1514,11 @@ footer .wave#wave4 {
 }
 
 /* tour */
+
+.customTooltip {
+    max-width: unset;
+    width: 300px;
+}
 
 .customTooltip .introjs-tooltiptext {
     color: var(--primary-color);
