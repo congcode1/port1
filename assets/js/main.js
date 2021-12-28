@@ -549,12 +549,12 @@ const app = {
                     intro: `
                     <h3>!!! Sử dụng ggchrome để bật chức năng này</h3>
                     <h3>{voice-text}-{action}</h3>
-                    <p>menu + {navigation name}: mở tab navigation tương ứng</p>
-                    <p>nghe nhạc: mở Mucsic Player</p>
-                    <p>chơi bài {song name}: play bài hát</p>
-                    <p>tắt nhạc: đóng Mucsic Player</p>
-                    <p>dừng nhạc: dừng Mucsic Player</p>
-                    <p>tiếp tục nghe nhạc: nghe tiếp Mucsic Player</p>
+                    <p>1. menu + {navigation name}: mở tab navigation tương ứng</p>
+                    <p>2. nghe nhạc: mở Mucsic Player</p>
+                    <p>3. chơi bài {song name}: play bài hát</p>
+                    <p>4. tắt nhạc: đóng Mucsic Player</p>
+                    <p>5. dừng nhạc: dừng Mucsic Player</p>
+                    <p>6. tiếp tục nghe nhạc: nghe tiếp Mucsic Player</p>
                     `
                 }],
                 tooltipClass: 'customTooltip'
