@@ -613,7 +613,8 @@ app.start();
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 // the link to your model provided by Teachable Machine export panel
-const URL = "https://teachablemachine.withgoogle.com/models/jZAU8Q5Xr/";
+const eWebcam = document.getElementById("webcam-container");
+const URL = "https://teachablemachine.withgoogle.com/models/sSGOvvszp/";
 
 let model, webcam, labelContainer, maxPredictions, isRun;
 
@@ -638,7 +639,8 @@ async function init() {
     window.requestAnimationFrame(loop);
 
     // append elements to the DOM
-    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    eWebcam.classList.remove("hide");
+    eWebcam.appendChild(webcam.canvas);
 
 }
 
@@ -663,7 +665,7 @@ async function predict() {
     }
     if (prediction[0].className.toLocaleLowerCase().includes("ms-hide") && (prediction[0].probability.toFixed(2) * 100) > 95) {
         eMP.classList.add("hide");
-        document.getElementById("webcam-container").classList.add("hide");
+        eWebcam.classList.add("hide");
         isRun = false;
     }
     console.log(prediction[0].className);
