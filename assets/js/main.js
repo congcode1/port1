@@ -613,12 +613,13 @@ app.start();
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 // the link to your model provided by Teachable Machine export panel
-const URL = "https://teachablemachine.withgoogle.com/models/5UFMPPmNY/";
+const URL = "https://teachablemachine.withgoogle.com/models/jZAU8Q5Xr/";
 
-let model, webcam, labelContainer, maxPredictions;
+let model, webcam, labelContainer, maxPredictions, isRun;
 
 // Load the image model and setup the webcam
 async function init() {
+    isRun = true;
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
@@ -642,9 +643,14 @@ async function init() {
 }
 
 async function loop() {
-    webcam.update(); // update the webcam frame
-    await predict();
-    window.requestAnimationFrame(loop);
+    if (isRun) {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    } else {
+        webcam.pause();
+        webcam.stop();
+    }
 }
 
 // run the webcam image through the image model
@@ -652,10 +658,15 @@ async function predict() {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predictTopK(webcam.canvas, 1);
 
-    if (prediction[0].className.toLocaleLowerCase().includes("ms-display") && (prediction[0].probability.toFixed(2) * 100) >= 70) {
-        console.log(prediction[0].className);
+    if (prediction[0].className.toLocaleLowerCase().includes("ms-display") && (prediction[0].probability.toFixed(2) * 100) > 95) {
         eMP.classList.remove("hide");
     }
+    if (prediction[0].className.toLocaleLowerCase().includes("ms-hide") && (prediction[0].probability.toFixed(2) * 100) > 95) {
+        eMP.classList.add("hide");
+        document.getElementById("webcam-container").classList.add("hide");
+        isRun = false;
+    }
+    console.log(prediction[0].className);
 }
 
 
