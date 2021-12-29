@@ -1282,7 +1282,7 @@ footer .wave#wave4 {
 /* Music player */
 
 .music-player {
-    display: none;
+    /* display: none; */
     position: fixed;
     bottom: 70px;
     right: 100px;
@@ -1301,6 +1301,22 @@ footer .wave#wave4 {
 .robot-btn {
     position: fixed;
     bottom: 20px;
+    right: 20px;
+    font-size: 2em;
+    z-index: 100;
+}
+
+.android-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    font-size: 2em;
+    z-index: 100;
+}
+
+#webcam-container {
+    position: fixed;
+    bottom: 60px;
     right: 20px;
     font-size: 2em;
     z-index: 100;

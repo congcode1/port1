@@ -28,9 +28,9 @@ const eRepeatSongBtn = $(".control-btn.repeat-btn");
 const eDashboard = $(".music-player__dashboard");
 const MUSIC_PLAYER_KEY = "NTC_MP";
 
-if (typeof screen.orientation !== 'undefined') {
-    eMP.classList.remove("hide");
-}
+// if (app.detectDevice === 0) {
+//     eMP.classList.remove("hide");
+// }
 
 var eRobotBtn = $(".robot-btn");
 
@@ -172,8 +172,34 @@ const app = {
         eCdImage.style.backgroundImage = `url('${this.currentSong.image}')`;
         eAudio.src = this.currentSong.audio;
     },
+    detectIsChrome: function () {
+        var test = function (regexp) { return regexp.test(window.navigator.userAgent) }
+        switch (true) {
+            case test(/edg/i): return "Microsoft Edge";
+            case test(/trident/i): return "Microsoft Internet Explorer";
+            case test(/firefox|fxios/i): return "Mozilla Firefox";
+            case test(/opr\//i): return "Opera";
+            case test(/ucbrowser/i): return "UC Browser";
+            case test(/samsungbrowser/i): return "Samsung Browser";
+            case test(/chrome|chromium|crios/i): return 1; //"Google Chrome"
+            case test(/safari/i): return "Apple Safari";
+            default: return "Other";
+        }
+    }(),
+    detectIsDesktop: function () {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }(),
     initial: function () {
-        if (!this.isTour) {
+
+        if (this.detectIsChrome === 1 && this.detectIsDesktop === 1) {
+            eRobotBtn.classList.remove("hide");
+        }
+
+        if (!this.isTour && this.detectIsDesktop === 1 && this.detectIsChrome === 1) {
             this.startTour();
         }
         //swiper
@@ -244,7 +270,7 @@ const app = {
         });
 
         // hide objects on mobile
-        if (typeof screen.orientation !== 'undefined') {
+        if (_this.detectIsDesktop === 1) {
             eOpenCv.classList.remove("hide");
             eOpenCv.addEventListener("click", function () {
                 eCv.classList.remove("hide");
@@ -383,7 +409,7 @@ const app = {
         var isPress = 0;
         document.onkeydown = function (e) {
             eRobotBtn.classList.add("robot-btn--listening");
-            if (e.keyCode === 90) {
+            if (e.keyCode === 90 && _this.detectIsChrome === 1 && _this.detectIsDesktop === 1) {
                 if (isPress === 0) {
                     _this.recognition.start();
                     isPress++;
@@ -419,6 +445,11 @@ const app = {
             _this.handleVoice(text);
         }
 
+        //androif click 
+
+        const eAndroid = $(".android-btn");
+        // eAndroid.onclick = init();
+
     },
     setSelectedNavigationItem: function (item) {
         eNavigationItems.forEach((resetItem) => {
@@ -438,7 +469,7 @@ const app = {
             eBody.classList.remove("scrollAble")
             eHeader.classList.remove("active");
             eFooter.classList.add("hide");
-            if (typeof screen.orientation !== 'undefined') {
+            if (this.detectIsChrome === 1) {
                 eMP.classList.remove("hide");
             }
         }
@@ -492,7 +523,7 @@ const app = {
         var handleText = text.toLocaleLowerCase();
         console.log("text from voice: ", handleText);
 
-        if (handleText.includes("chơi bài")) {
+        if (handleText.includes("bài")) {
             var songName = handleText.split("bài")[1];
             const matchSongIndex = this.songs.findIndex(s => s.name.toLocaleLowerCase().trim() === this.helperFuncs.removeVietnameseTones(songName.trim()));
             this.currentIndex = matchSongIndex;
@@ -515,7 +546,7 @@ const app = {
 
         if (handleText.includes("tắt nhạc")) {
             eAudio.pause();
-            eMP.style.display = "none";
+            eMP.classList.add("hide");
         }
 
         if (handleText.includes("tắt web")) {
@@ -524,8 +555,12 @@ const app = {
 
         if (handleText.includes("menu")) {
             var itemText = handleText.split("menu")[1];
+            var selectedItemByIndex = Array.from(eNavigationItems)[Number(itemText.trim()) - 1];
             var selectedItem = Array.from(eNavigationItems).find(s => s.firstElementChild.innerText.toLocaleLowerCase().trim() === itemText.trim());
+
             selectedItem && selectedItem.click();
+            selectedItemByIndex && selectedItemByIndex.click();
+
         }
     },
     scrollToActiveSong: function () {
@@ -562,6 +597,7 @@ const app = {
         ).start();
         localStorage.setItem("isTour", true);
     },
+
     start: function () {
         this.defineProperties();
         this.initial();
@@ -572,6 +608,56 @@ const app = {
 }
 
 app.start();
+
+// More API functions here:
+// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+// the link to your model provided by Teachable Machine export panel
+const URL = "https://teachablemachine.withgoogle.com/models/5UFMPPmNY/";
+
+let model, webcam, labelContainer, maxPredictions;
+
+// Load the image model and setup the webcam
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    // load the model and metadata
+    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+    // or files from your local hard drive
+    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    // Convenience function to setup a webcam
+    const flip = true; // whether to flip the webcam
+    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+
+    // append elements to the DOM
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+
+}
+
+async function loop() {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+}
+
+// run the webcam image through the image model
+async function predict() {
+    // predict can take in an image, video or canvas html element
+    const prediction = await model.predictTopK(webcam.canvas, 1);
+
+    if (prediction[0].className.toLocaleLowerCase().includes("ms-display") && (prediction[0].probability.toFixed(2) * 100) >= 70) {
+        console.log(prediction[0].className);
+        eMP.classList.remove("hide");
+    }
+}
+
 
 var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
 var eGallery = document.querySelector(".portfolio__gallery");
