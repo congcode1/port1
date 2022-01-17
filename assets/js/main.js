@@ -585,6 +585,7 @@ const app = {
                     <p>4. tắt nhạc: đóng Mucsic Player</p>
                     <p>5. dừng nhạc: dừng Mucsic Player</p>
                     <p>6. tiếp tục nghe nhạc: nghe tiếp Mucsic Player</p>
+                    <p>7. camera: mo? camera va thuc hien 1 so thao tac</p>
                     `
                 }],
                 tooltipClass: 'customTooltip'
@@ -750,3 +751,9 @@ eMenuToggle.addEventListener("click", () => {
 //     mn.style.transform = `rotateZ(${mm}deg)`;
 //     sc.style.transform = `rotateZ(${ss}deg)`;
 // })
+
+
+// SVG text
+
+var eSvg = $(".svgText");
+eSvg.onclick = () => window.location = '/';

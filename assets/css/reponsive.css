@@ -133,9 +133,7 @@
     }
 
     .header__social.indicator-navigation {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        margin: 0 auto;
     }
 }
 
@@ -170,7 +168,28 @@
         height: 160px;
     }
 
-    /* section {
-        margin: 0 calc((100% - 576px) / 2);
-    } */
+    .section {
+        margin-top: 80px !important;
+    }
+
+    #header .svgText {
+        font: 3em "Montserrat";
+        width: 380px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    #header.active .svgText {
+        font: 2.2em "Montserrat";
+        width: 400px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 376px) {
+    #header.active .svgText {
+        font: 2em "Montserrat";
+        width: 400px;
+        height: 40px;
+    }
 }

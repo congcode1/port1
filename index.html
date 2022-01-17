@@ -92,7 +92,22 @@
     </div>
     <div id="header">
         <div class="container grid wide">
-            <h1><a href="/">Ng Thanh Cong</a></h1>
+            <!-- <h1><a href="/">Ng Thanh Cong</a></h1> -->
+
+            <svg class="svgText">
+                <symbol id="s-text">
+                    <text text-anchor="left" x="0%" y="80%">Ng Thanh Cong</text>
+                </symbol>
+
+                <g class="g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+
             <p>
                 I'm a
                 <span class='console-container'><span id='text'></span>
@@ -1060,7 +1075,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/text[coder].js"></script>
+    <script src="./assets/js/text_typing_animation.js"></script>
 
     <script>
         var eIndicatorNavigationItems = document.querySelectorAll(".indicator-navigation__item");
