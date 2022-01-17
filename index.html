@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.3.0/introjs.min.css"
         integrity="sha512-YZO1kAqr8VPYJMaOgT4ZAIP4OeCuAWoZqgdvVYjeqyfieNWrUTzZrrxpgAdDrS7nV3sAVTKdP6MSKhqaMU5Q4g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/reponsive.css">
@@ -23,7 +24,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-<body id="body" background="./assets/images/background/bg3.jpg">
+<body id="body" background="./assets/images/background/bg4.jpg">
     <div class="ML">
         <div class="android-btn" onclick="init()">
             <i class="fab fa-android"></i>
@@ -93,10 +94,20 @@
         <div class="container grid wide">
             <!-- <audio src="./assets/images/mz.mp3" autoplay loop></audio> -->
 
+
+
             <h1><a href="/">Ng Thanh Cong</a></h1>
 
-            <p>I'm a
-                <span class="animated-text" data-text="Coder...">Coder...</span> from the southside VietNam
+            <p>
+                <!-- <span class="animated-text" data-text="Coder...">Coder...</span> -->
+
+                I'm a
+                <span class='console-container'><span id='text'></span>
+                    <span class='console-underscore' id='console'>&#95;</span>
+                </span>
+
+
+                from the southside VietNam
             </p>
             <ul class="header__list header__navigation">
                 <li class="navigation__item">
@@ -105,17 +116,17 @@
                     </a>
                 </li>
                 <li class="navigation__item">
-                    <a class="" href="#about" style="--clr:#18d26e;--i:0">
+                    <a class="" href="#about" style="--clr:#f53b57;--i:0">
                         <span>About</span>
                     </a>
                 </li>
                 <li class="navigation__item">
-                    <a class="" href="#resume" style="--clr:#18d26e;--i:0">
+                    <a class="" href="#resume" style="--clr:#ffa801;--i:0">
                         <span>Resume</span>
                     </a>
                 </li>
                 <li class="sevice-check navigation__item">
-                    <a class="" href="#services" style="--clr:#18d26e;--i:0">
+                    <a class="" href="#services" style="--clr:#0fbcf9;--i:0">
                         <span>Services</span>
                     </a>
                 </li>
@@ -125,13 +136,13 @@
                     </a>
                 </li>
                 <li class="navigation__item">
-                    <a class="" href="#contact" style="--clr:#18d26e;--i:0">
+                    <a class="" href="#contact" style="--clr:#5d62fb;--i:0">
                         <span>Contact</span>
                     </a>
                 </li>
             </ul>
 
-            <div class="header__list header__social">
+            <!-- <div class="header__list header__social">
                 <a href="">
                     <i class="fab fa-twitter"></i>
                 </a>
@@ -144,7 +155,51 @@
                 <a href="">
                     <i class="fab fa-linkedin"></i>
                 </a>
+            </div> -->
+            <div class="header__social indicator-navigation">
+                <ul class="indicator-navigation__list">
+                    <li class="indicator-navigation__item" style="--iclr:#f53b57">
+                        <a href="">
+                            <span class="indicator-navigation__icon">
+                                <!-- <ion-icon name="home-outline"></ion-icon> -->
+
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span class="indicator-navigation__text">Home</span>
+                        </a>
+                    </li>
+                    <li class="indicator-navigation__item" style="--iclr:#5d62fb">
+                        <a href="">
+                            <span class="indicator-navigation__icon">
+                                <!-- <ion-icon name="person-outline"></ion-icon> -->
+                                <i class="fab fa-facebook-f"></i>
+                            </span>
+                            <span class="indicator-navigation__text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="indicator-navigation__item" style="--iclr:#0fbcf9">
+                        <a href="">
+                            <span class="indicator-navigation__icon">
+                                <!-- <ion-icon name="help-circle-outline"></ion-icon> -->
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                            <span class="indicator-navigation__text">Help</span>
+                        </a>
+                    </li>
+                    <li class="indicator-navigation__item" style="--iclr:#ffa801">
+                        <a href="">
+                            <span class="indicator-navigation__icon">
+                                <!-- <ion-icon name="chatbubbles-outline"></ion-icon> -->
+                                <i class="fab fa-linkedin"></i>
+                            </span>
+                            <span class="indicator-navigation__text">Message</span>
+                        </a>
+                    </li>
+                    <div class="indicator"></div>
+                </ul>
             </div>
+
+
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
@@ -1013,9 +1068,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 
-
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/text[coder].js"></script>
 
+    <script>
+        var eIndicatorNavigationItems = document.querySelectorAll(".indicator-navigation__item");
+        eIndicatorNavigationItems.forEach(item => {
+            item.addEventListener("mouseover", () => {
+                item.classList.add("active");
+            })
+            item.addEventListener("mouseleave", () => {
+                item.classList.remove("active");
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -2,7 +2,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-
 var eOpenCv = $('.cv-fixed-btn');
 var eCv = $('.cv-content');
 var eCloseCv = $('.cv-close');
