@@ -1306,9 +1306,9 @@ footer .wave#wave4 {
 
 .robot-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     right: 20px;
-    font-size: 2em;
+    font-size: 0.8em;
     z-index: 100;
 }
 
@@ -1676,6 +1676,5 @@ footer .wave#wave4 {
 .console-underscore {
     display: inline-block;
     position: relative;
-    left: 6px;
     color: var(--primary-color);
 }

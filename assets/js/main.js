@@ -444,11 +444,6 @@ const app = {
             _this.handleVoice(text);
         }
 
-        //androif click 
-
-        const eAndroid = $(".android-btn");
-        // eAndroid.onclick = init();
-
     },
     setSelectedNavigationItem: function (item) {
         eNavigationItems.forEach((resetItem) => {
@@ -463,7 +458,6 @@ const app = {
             eBody.classList.add("scrollAble")
             eHeader.classList.add("active");
             eFooter.classList.remove("hide");
-            eMP.classList.add("hide");
         } else {
             eBody.classList.remove("scrollAble")
             eHeader.classList.remove("active");
@@ -472,6 +466,8 @@ const app = {
                 eMP.classList.remove("hide");
             }
         }
+
+        eMP.classList.add("hide");
 
         if (item.textContent.toLocaleLowerCase().trim() === "about") {
             new Waypoint({
@@ -548,8 +544,8 @@ const app = {
             eMP.classList.add("hide");
         }
 
-        if (handleText.includes("tắt web")) {
-            window.open('', '_self').close();
+        if (handleText.includes("camera")) {
+            window.init();
         }
 
         if (handleText.includes("menu")) {
@@ -665,9 +661,11 @@ async function predict() {
     if (prediction[0].className.toLocaleLowerCase().includes("ms-hide") && (prediction[0].probability.toFixed(2) * 100) > 95) {
         eMP.classList.add("hide");
         eWebcam.classList.add("hide");
+        const eWebcamCanvas = eWebcam.getElementsByTagName("canvas");
+        eWebcamCanvas && Array.from(eWebcamCanvas).forEach(item => item.remove());
+        webcam.stop();
         isRun = false;
     }
-    console.log(prediction[0].className);
 }
 
 

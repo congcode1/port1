@@ -131,7 +131,12 @@
         width: 100%;
         bottom: 0;
     }
-    
+
+    .header__social.indicator-navigation {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 /* Phone */
