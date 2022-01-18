@@ -98,6 +98,10 @@ iframe {
     margin-top: 20px;
 }
 
+.code-icon {
+    color: var(--primary-color);
+}
+
 #header .animated-text,
 #resume .animated-text {
     position: relative;
