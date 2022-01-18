@@ -1706,6 +1706,10 @@ footer .wave#wave4 {
     width: 100%;
 }
 
+#header.active .text-copy {
+    stroke-width: 3px;
+}
+
 .text-copy:nth-child(1) {
     stroke: #4d163d;
     animation-delay: -1;

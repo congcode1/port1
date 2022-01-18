@@ -184,6 +184,10 @@
         width: 400px;
         height: 40px;
     }
+
+    .text-copy {
+        stroke-width: 2px;
+    }
 }
 
 @media (max-width: 376px) {

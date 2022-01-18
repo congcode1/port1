@@ -1,3 +1,5 @@
+import AiMusicPlayer from "./ai_music_player.js";
+
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -545,7 +547,7 @@ const app = {
         }
 
         if (handleText.includes("camera")) {
-            window.init();
+            AiMusicPlayer.init();
         }
 
         if (handleText.includes("menu")) {
@@ -605,69 +607,7 @@ const app = {
 
 app.start();
 
-// More API functions here:
-// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-// the link to your model provided by Teachable Machine export panel
-const eWebcam = document.getElementById("webcam-container");
-const URL = "https://teachablemachine.withgoogle.com/models/sSGOvvszp/";
-
-let model, webcam, labelContainer, maxPredictions, isRun;
-
-// Load the image model and setup the webcam
-async function init() {
-    isRun = true;
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
-
-    // load the model and metadata
-    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-    // or files from your local hard drive
-    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
-    model = await tmImage.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
-
-    // Convenience function to setup a webcam
-    const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-    await webcam.setup(); // request access to the webcam
-    await webcam.play();
-    window.requestAnimationFrame(loop);
-
-    // append elements to the DOM
-    eWebcam.classList.remove("hide");
-    eWebcam.appendChild(webcam.canvas);
-
-}
-
-async function loop() {
-    if (isRun) {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    } else {
-        webcam.pause();
-        webcam.stop();
-    }
-}
-
-// run the webcam image through the image model
-async function predict() {
-    // predict can take in an image, video or canvas html element
-    const prediction = await model.predictTopK(webcam.canvas, 1);
-
-    if (prediction[0].className.toLocaleLowerCase().includes("ms-display") && (prediction[0].probability.toFixed(2) * 100) > 95) {
-        eMP.classList.remove("hide");
-    }
-    if (prediction[0].className.toLocaleLowerCase().includes("ms-hide") && (prediction[0].probability.toFixed(2) * 100) > 95) {
-        eMP.classList.add("hide");
-        eWebcam.classList.add("hide");
-        const eWebcamCanvas = eWebcam.getElementsByTagName("canvas");
-        eWebcamCanvas && Array.from(eWebcamCanvas).forEach(item => item.remove());
-        webcam.stop();
-        isRun = false;
-    }
-}
 
 
 var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
@@ -713,8 +653,6 @@ eGalleryCloseBtn.addEventListener("click", function () {
 var eWatchPortfolioDetail = document.querySelectorAll(".fas.fa-link");
 var ePortfolioDetail = document.querySelector(".portfolio__detail");
 var ePortfolioDetailCloseBtn = document.querySelector(".portfolio__detail-icon.icon-close");
-
-//fas fa-link
 
 eWatchPortfolioDetail.forEach((item) => {
     item.addEventListener("click", function () {
