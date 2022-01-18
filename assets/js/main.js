@@ -1,4 +1,5 @@
 import AiMusicPlayer from "./ai_music_player.js";
+import GalleryPortfolio from "./gallery_portfolio.js";
 
 
 const $ = document.querySelector.bind(document);
@@ -446,6 +447,19 @@ const app = {
             _this.handleVoice(text);
         }
 
+        // menu-toggle
+
+        eMenuToggle.addEventListener("click", () => {
+            eMenuToggle.classList.toggle("active");
+            eHeaderNavigationList.classList.toggle("header__navigation--mobile");
+        })
+
+
+        // SVG text
+
+        var eSvg = $(".svgText");
+        eSvg.onclick = () => window.location = '/';
+
     },
     setSelectedNavigationItem: function (item) {
         eNavigationItems.forEach((resetItem) => {
@@ -606,92 +620,5 @@ const app = {
 }
 
 app.start();
+GalleryPortfolio();
 
-
-
-
-var eWatchInGallery = document.querySelectorAll(".fas.fa-plus");
-var eGallery = document.querySelector(".portfolio__gallery");
-var eGalleryImg = document.querySelector(".portfolio__gallery img");
-var eGalleryCloseBtn = document.querySelector(".gallery-icon.icon-close");
-var eGalleryNextBtn = document.querySelector(".gallery-icon.icon-next");
-var eGalleryPrevBtn = document.querySelector(".gallery-icon.icon-prev");
-var eListImages = document.querySelectorAll(".portfolio__item img");
-
-var currentIndex = 0;
-
-function showGalleryImage(index) {
-    eGalleryImg.src = eListImages[index].src;
-    eGallery.classList.remove("hide");
-}
-
-eWatchInGallery.forEach((item, index) => {
-    item.addEventListener("click", function () {
-        currentIndex = index;
-        showGalleryImage(currentIndex);
-    })
-})
-
-eGalleryNextBtn.addEventListener("click", function () {
-    currentIndex++;
-    if (currentIndex >= eListImages.length)
-        currentIndex = 0;
-    showGalleryImage(currentIndex);
-});
-
-eGalleryPrevBtn.addEventListener("click", function () {
-    currentIndex--;
-    if (currentIndex <= 0)
-        currentIndex = eListImages.length - 1;
-    showGalleryImage(currentIndex);
-});
-
-eGalleryCloseBtn.addEventListener("click", function () {
-    eGallery.classList.add("hide");
-})
-
-var eWatchPortfolioDetail = document.querySelectorAll(".fas.fa-link");
-var ePortfolioDetail = document.querySelector(".portfolio__detail");
-var ePortfolioDetailCloseBtn = document.querySelector(".portfolio__detail-icon.icon-close");
-
-eWatchPortfolioDetail.forEach((item) => {
-    item.addEventListener("click", function () {
-        ePortfolioDetail.classList.remove("hide");
-    })
-})
-
-ePortfolioDetailCloseBtn.addEventListener("click", function () {
-    ePortfolioDetail.classList.add("hide");
-})
-
-// menu-toggle
-
-eMenuToggle.addEventListener("click", () => {
-    eMenuToggle.classList.toggle("active");
-    eHeaderNavigationList.classList.toggle("header__navigation--mobile");
-})
-
-// clock
-
-// const deg = 6;
-
-// const hr = document.querySelector("#hr");
-// const mn = document.querySelector("#mn");
-// const sc = document.querySelector("#sc");
-
-// setInterval(() => {
-//     let day = new Date();
-//     let hh = day.getHours() * 30;
-//     let mm = day.getMinutes() * deg;
-//     let ss = day.getSeconds() * deg;
-
-//     hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
-//     mn.style.transform = `rotateZ(${mm}deg)`;
-//     sc.style.transform = `rotateZ(${ss}deg)`;
-// })
-
-
-// SVG text
-
-var eSvg = $(".svgText");
-eSvg.onclick = () => window.location = '/';
