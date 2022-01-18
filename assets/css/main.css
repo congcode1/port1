@@ -1615,7 +1615,7 @@ footer .wave#wave4 {
     transition: 0.25s;
     text-transform: uppercase;
     transform: scale(0);
-    font-size: 12px;
+    font-size: 9px;
 }
 
 .indicator-navigation__item:hover .indicator-navigation__text {
