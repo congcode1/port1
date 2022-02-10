@@ -4,9 +4,9 @@
     "display": "fullscreen",
     "icons": [
         {
-            "src": "./assets/images/icon.jpg",
+            "src": "./icons/i1.png",
             "sizes": "192x192",
-            "type": "image/jpg"
+            "type": "image/png"
         }
     ],
     "name": "Ng Thanh Cong Portfolio",
