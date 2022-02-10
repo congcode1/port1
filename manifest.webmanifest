@@ -1,0 +1,15 @@
+{
+    "background_color": "black",
+    "description": "zzz",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "./assets/images/icon.jpg",
+            "sizes": "192x192",
+            "type": "image/jpg"
+        }
+    ],
+    "name": "Ng Thanh Cong Portfolio",
+    "short_name": "NTC Portfolio",
+    "start_url": "./index.html"
+}
