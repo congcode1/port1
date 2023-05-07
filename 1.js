@@ -1,16 +1,6 @@
-import AiMusicPlayer from "./ai_music_player.js";
-import { GalleryPortfolio } from "./gallery_portfolio.js";
 
-
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
-var eOpenCv = $('.cv-fixed-btn');
-var eCv = $('.cv-content');
-var eCloseCv = $('.cv-close');
 
 let eSkilsContainer = $('.skill-container');
-var eNavigationItems = $$(".navigation__item a");
 var eSocialList = $(".header__social");
 var eIntro = $("#header p");
 var eHeader = $("#header");
@@ -28,7 +18,6 @@ const eCdImage = $(".music-player__song .song__thumb");
 const eRandomSongBtn = $(".control-btn.random-btn");
 const eRepeatSongBtn = $(".control-btn.repeat-btn");
 const eDashboard = $(".music-player__dashboard");
-const MUSIC_PLAYER_KEY = "NTC_MP";
 
 // if (app.detectDevice === 0) {
 //     eMP.classList.remove("hide");
@@ -620,6 +609,6 @@ const app = {
 }
 
 app.start();
-GalleryPortfolio();
+// GalleryPortfolio();
 
 
